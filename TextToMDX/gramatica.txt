@@ -1,0 +1,9 @@
+<nome>:
+<nr>:
+<info>:
+
+Declaração do Cubo:
+`Cubo <nome>`
+Declaração do Eixo:
+
+`Eixo <nr>, <info>.`
