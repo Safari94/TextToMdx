@@ -23,9 +23,9 @@ public class Tokenizer {
     public Tokenizer(String str){
         this.str=str;
         this.tokenDatas= new ArrayList<TokenData>();
-        tokenDatas.add(new TokenData(Pattern.compile("[^Cubo ][A-Za-z ]*[^.]"), TokenType.NCUBO));
-        tokenDatas.add(new TokenData(Pattern.compile("[^Eixo ][0-9 ,a-zA-zã]*[^.]"), TokenType.INFOEIXO));
-        tokenDatas.add(new TokenData(Pattern.compile("[^Onde ][0-9 ,a-zA-zã]*[^.]"),TokenType.INFOONDE));
+        tokenDatas.add(new TokenData(Pattern.compile("[Cubo ][A-Za-z ]+[.\n]"), TokenType.NCUBO));
+        tokenDatas.add(new TokenData(Pattern.compile("([Eixo ][0-9 ,a-zA-zã]+[.\n])+"), TokenType.INFOEIXO));
+        tokenDatas.add(new TokenData(Pattern.compile("([Onde ][0-9 ,a-zA-zã]+[.])+"),TokenType.INFOONDE));
     }
     
     public Token nextToken(){
