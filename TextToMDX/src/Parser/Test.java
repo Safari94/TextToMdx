@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Tokenizer;
+package Parser;
 
 import java.util.ArrayList;
 import java.util.regex.Pattern;
@@ -42,7 +42,7 @@ public class Test {
         
         }
         
-        return sb.toString();
+        return sb.subSequence(0,sb.length()-2).toString();
     
     
     }
