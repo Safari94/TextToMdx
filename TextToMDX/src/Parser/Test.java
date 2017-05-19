@@ -22,10 +22,12 @@ public class Test {
     
     private static Pattern eixo = Pattern.compile("[EIiXxOo ][0-9 ,a-zA-zã.]+");
     private static Pattern onde = Pattern.compile("[OoNnDdEe ][0-9 ,a-zA-zã.]+");
-    private static String example="Cubo Adventure Works.\n"+
+    private static String example1="Cubo Adventure Works.\n"+
                "Eixo 0, Medida x, Dimensao y atributo z.\n"+
                "Eixo 1, Medida a, Dimensao y atributo z.\n"+
                "Onde dimensao x atributo y menor 0.";
+    
+    private static String example2="Eixo 1, Medida a, Dimensao y atributo z.";
 
     public Test() {
     }
@@ -92,10 +94,13 @@ public class Test {
         ArrayList<String> ondes = new ArrayList<>();
        
        
-       String[] string= example.split("\n");
+       String[] string= example1.split("\n");
        String cube= new Test().nomeCubo(string[0]);
        eixos= new Test().retiraEixos(string);
        ondes= new Test().retiraOnde(string);
+       
+       ParserEixo pe =new ParserEixo(example2);
+       System.out.println("EIXO -> "+pe.getNumero());
        
       
        
