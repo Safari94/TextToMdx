@@ -5,6 +5,7 @@
  */
 package Tokenizer;
 
+import java.util.ArrayList;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
@@ -18,29 +19,113 @@ public class Test {
      * @param args the command line arguments
      */
     
-    private static Pattern eixo = Pattern.compile("[EwIiXxOo ][0-9 ,a-zA-zã.]+");
+    
+    private static Pattern eixo = Pattern.compile("[EIiXxOo ][0-9 ,a-zA-zã.]+");
     private static Pattern onde = Pattern.compile("[OoNnDdEe ][0-9 ,a-zA-zã.]+");
-    
-    
-    public static void main(String[] args) {
-        int i=0;
-        String[] eixos=null;
-       String example ="Cubo Adventure Works.\n"+
+    private static String example="Cubo Adventure Works.\n"+
                "Eixo 0, Medida x, Dimensao y atributo z.\n"+
                "Eixo 1, Medida a, Dimensao y atributo z.\n"+
                "Onde dimensao x atributo y menor 0.";
+
+    public Test() {
+    }
+    
+    public String nomeCubo(String s){
+        
+        String aux = s.trim();
+        
+        StringBuilder sb = new StringBuilder();
+        
+        String[] f = aux.split(" ");
+        for(int i = 1; i<f.length; i++){
+            sb.append(f[i]+ " ");
+        
+        }
+        
+        return sb.toString();
+    
+    
+    }
+    
+    
+    
+    
+    
+    public ArrayList<String> retiraEixos(String[] s){
+        ArrayList<String> eixos = new ArrayList<String>();
+        
+        for(String i:s){
+            Matcher m=eixo.matcher(i);
+            if(m.matches()){
+            eixos.add(i);
+            }
+        }
+        
+        
+    
+    
+    return eixos;
+    }
+    
+    public ArrayList<String> retiraOnde(String[] s){
+        ArrayList<String> ondes = new ArrayList<String>();
+        
+        for(String i:s){
+            Matcher m=onde.matcher(i);
+            if(m.matches()){
+            ondes.add(i);
+            }
+        }
+        
+        
+    
+    
+    return ondes;
+    }
+    
+    
+    public static void main(String[] args) {
+        
+        
+        int i=0;
+        ArrayList<String> eixos = new ArrayList<>();
+        ArrayList<String> ondes = new ArrayList<>();
+       
        
        String[] string= example.split("\n");
-       String cube= string[0];
+       String cube= new Test().nomeCubo(string[0]);
+       eixos= new Test().retiraEixos(string);
+       ondes= new Test().retiraOnde(string);
+       
       
        
-       System.out.println(string[0].trim());
+      
        for(String s: string){
            System.out.println(i+" -> " +s);
            i++;
        
        
        }
+       
+       for(String s: eixos){
+           i=0;
+           System.out.println(i+" -> " +s);
+           i++;
+       
+       
+       }
+       
+       for(String s: ondes){
+           i=1;
+           System.out.println(i+" -> " +s);
+           i++;
+       
+       
+       }
+       
+       System.out.println(cube);
+       
+       
        
        /**Tokenizer tokenizer = new Tokenizer(example);
        
@@ -50,6 +135,8 @@ public class Test {
        }*/
        
     }
+    
+    
     
    
     
